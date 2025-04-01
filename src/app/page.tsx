@@ -13,7 +13,7 @@ export default function Home() {
 
     const formData = new FormData(event.currentTarget);
     const url = formData.get("url") as string;
-    const res = await fetch(`/api?url=${url}`);
+    const res = await fetch(`/api/screenshot/?url=${url}`);
 
     if (!res.ok) setScreenshot(null);
     else {

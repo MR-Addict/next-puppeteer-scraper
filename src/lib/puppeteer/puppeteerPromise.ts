@@ -11,7 +11,7 @@ async function createPuppeteer(): Promise<Browser> {
       args: chromium.args,
       headless: chromium.headless,
       defaultViewport: chromium.defaultViewport,
-      executablePath: env.BROWSER_PATH || (await chromium.executablePath())
+      executablePath: env.VERCEL ? await chromium.executablePath() : env.BROWSER_PATH
     });
   }
   return globalWithPuppeteer._puppeteerInstance;

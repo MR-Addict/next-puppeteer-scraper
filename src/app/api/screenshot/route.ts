@@ -1,7 +1,5 @@
 import { puppeteerPromise } from "@/lib/puppeteer/puppeteerPromise";
 
-export const maxDuration = 60;
-
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const searchParams = url.searchParams;
