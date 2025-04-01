@@ -11,10 +11,11 @@ export async function GET(req: Request) {
   try {
     const browser = await puppeteerPromise;
     const page = await browser.newPage();
-    await page.goto(site);
-    const title = await page.title();
+    await page.setViewport({ width: 1024, height: 768, deviceScaleFactor: 2 });
+    await page.goto(site, { waitUntil: "networkidle2" });
+    const screenshot = await page.screenshot({ type: "webp", omitBackground: true });
     await page.close();
-    return new Response(title);
+    return new Response(screenshot, { headers: { "Content-Type": "image/webp" } });
   } catch (err) {
     return new Response(null, { status: 500 });
   }
