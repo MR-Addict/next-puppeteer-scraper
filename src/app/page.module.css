@@ -1,0 +1,37 @@
+@reference "./globals.css";
+
+.wrapper {
+  @apply w-full flex-1 flex items-center justify-center;
+}
+
+.container {
+  @apply flex flex-col items-center gap-2;
+
+  & form {
+    @apply flex flex-row border border-neutral-600 rounded-lg overflow-hidden;
+
+    & :is(input, button) {
+      @apply bg-neutral-800 outline-none py-2 px-3;
+    }
+
+    & input {
+      @apply w-screen max-w-xs;
+    }
+
+    & button {
+      @apply cursor-pointer border-l border-l-neutral-600;
+
+      &:hover {
+        @apply bg-neutral-900;
+      }
+    }
+  }
+
+  & > p {
+    @apply text-neutral-200;
+
+    &[data-success="false"] {
+      @apply text-red-600;
+    }
+  }
+}
